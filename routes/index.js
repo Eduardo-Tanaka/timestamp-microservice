@@ -13,14 +13,14 @@ router.get('/:date', function(req, res, next){
 	var natural;
 	var json = {};
 	if(!Number(date)) {
-		json.unix = Date.parse(json.natural);
 		json.natural = moment(date).format("MMMM D, YYYY");
+		json.unix = Date.parse(json.natural);
 		if(json.natural === "Invalid date") {
 			json.natural = null;
 		}
 	} else {
-		json.unix = parseFloat(date);
 		json.natural = moment.unix(date).format("MMMM D, YYYY");
+		json.unix = parseFloat(date);
 	}
 
 	res.send(json);
